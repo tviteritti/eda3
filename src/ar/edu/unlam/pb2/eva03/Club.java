@@ -14,6 +14,9 @@ public class Club {
 	private String nombre;
 	private Set<Deportista> socios;
 	private Map<String, Evento> competencias;
+	Boolean	corredor=false;
+	Boolean tria=false;
+	Boolean nadador=false;
 
 	public Club(String string) {
 		
@@ -33,14 +36,31 @@ public class Club {
 		return socios.size();
 	}
 	public void crearEvento(TipoDeEvento tipo, String nombre) throws NoEstaPreparado{
-
+		if(tipo==tipo.CARRERA_42K) {
+		corredor= true;
+		}
+		if(tipo==tipo.CARRERA_NATACION_EN_AGUAS_ABIERTAS) {
+			nadador= true;
+			}
+		if(tipo==tipo.TRIATLON_IRONMAN) {
+			tria= true;
+			}
+		Evento e = new Evento(nombre, tipo);
 	
 		
 	}
-	public Object inscribirEnEvento(String string, Deportista celeste) {
-	
+	public Boolean inscribirEnEvento(String string, Deportista celeste) throws NoEstaPreparado{
+	if(celeste instanceof Corredor && tria==true) {
+		throw new NoEstaPreparado("error");
+	}
+	if(celeste instanceof Corredor && nadador==true) {
+		throw new NoEstaPreparado("error");
+	}
+	if(celeste instanceof Corredor && corredor==true) {
+		return true;
+	}
 		
-		return null;
+		return true;
 	}
 	
 }
