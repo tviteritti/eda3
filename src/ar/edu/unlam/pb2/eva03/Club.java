@@ -33,20 +33,8 @@ public class Club {
 		return socios.size();
 	}
 	public void crearEvento(TipoDeEvento tipo, String nombre) throws NoEstaPreparado{
-		Evento nuevo = new Evento(nombre, tipo);
-		switch(tipo) {
-		case CARRERA_NATACION_EN_AGUAS_ABIERTAS:
-			competencias.put(nombre, nuevo);
-			break;
-		case TRIATLON_IRONMAN:
-			competencias.put(nombre, nuevo);
-			break;
-		case CARRERA_42K:
-			competencias.put(nombre, nuevo);
-			break;
-			default:
-				throw new NoEstaPreparado("Este evento no es compatible");
-	}
+
+	
 		
 	}
 	public Object inscribirEnEvento(String string, Deportista celeste) {
